@@ -1,9 +1,9 @@
-import './util.js';
-import './data_base.js';
-import './data.js';
+import {arrOffer} from './data.js';
+import {createCard} from './create_card.js';
 
-import {getRandomNumber,getRandomCoordinate,getArrValue} from './util.js';
-import {types,time,features,photos} from './data_base.js';
-import {getAvatar,getOffer,getLocation} from './data.js';
+
+createCard(arrOffer)
+
+
 
 
