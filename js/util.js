@@ -22,7 +22,7 @@ function getRandomCoordinate(min,max,dec) {
 
 function getArrValue(arr) {
   let newArr = [];
-  for (let i = 0; i < getRandomNumber(0,arr.length); i++) {
+  for (let i = 0; i < getRandomNumber(1,arr.length+1); i++) {
     let randomFeature = arr[getRandomNumber(0,arr.length-1)];
     if (newArr.indexOf(randomFeature) === -1) {
       newArr.push(randomFeature)
