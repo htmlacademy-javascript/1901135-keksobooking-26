@@ -1,4 +1,4 @@
-export {getRandomNumber,getRandomCoordinate,getArrValue}
+export {getRandomNumber,getRandomCoordinate,getArrValue,getGuestsCountName}
 
 function getRandomNumber(min,max) {
   if (min<0||max<0||min===max||max<min) {
@@ -29,4 +29,9 @@ function getArrValue(arr) {
     }
   };
   return newArr
+}
+
+function getGuestsCountName(val) {
+  const names = ['гостя','гостей','гостей'];
+  return names[+val - 1]
 }
