@@ -1,11 +1,15 @@
 export {toggleFormStatus}
+
 import {getGuestsCountName} from './util.js';
+import {showSuccessPopup,showErrorPopup} from './user_modals.js';
+import {sendData} from './fetch.js';
 
 const form = document.querySelector('.ad-form');
 const formFieldsetsList = form.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersList = mapFilters.querySelectorAll('select, fieldset');
 
+/* Функция вкл./выкл. форму */
 function toggleActiv(arr, status) {
   arr.forEach(el => el.disabled = status)
 }
@@ -17,11 +21,9 @@ function toggleFormStatus(status) {
   toggleActiv(mapFiltersList, status);
 };
 
-/* Form validate */
-
+/* Валидация формы */
 const MIN_TITLE_LENGTH = 30;
 const MAX_TITLE_LENGTH = 100;
-const MAX_ROOM_PRICE = 100000;
 const MAX_ROOMS = 100;
 
 const pristine = new Pristine(form, {
@@ -93,7 +95,15 @@ checkOutField.addEventListener('change', (evt) => {
   checkInField.value = evt.target.value;
 });
 
+
+// Отправка формы
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  pristine.validate();
+  
+  const isValid = pristine.validate();
+
+  if (isValid) {
+    const formData = new FormData(evt.target)
+    sendData(showSuccessPopup,showErrorPopup,formData)
+  }
 });

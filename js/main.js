@@ -1,8 +1,11 @@
-import {arrOffer} from './data.js';
-import {createCard} from './create_card.js';
-import {toggleFormStatus} from './form.js';
+import {showOfferPopup} from './map.js';
+import {getData} from './fetch.js';
 
-createCard(arrOffer)
+// Получение и отрисовка обьявлений с сервера
+getData(showOfferPopup)
+
+
+
 
 
 
