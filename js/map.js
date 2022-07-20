@@ -1,7 +1,7 @@
 import {toggleFormStatus} from './form.js';
 import {createCard} from './create_card.js';
 
-export {showOfferPopup}
+export {showOfferPopup,markerGroup}
 
 // Старотовые координаты
 const START_LAT = 35.69755;
@@ -62,7 +62,7 @@ const ordinaryPinIcon = L.icon({
 
 // Балун
 function showOfferPopup(offers) {
-  offers.forEach((card) =>  {
+  offers.slice(0,10).forEach((card) =>  {
     const marker = L.marker({
       lat: card.location.lat,
       lng: card.location.lng,

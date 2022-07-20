@@ -1,4 +1,4 @@
-export {getRandomNumber,getRandomCoordinate,getArrValue,getGuestsCountName}
+export {getRandomNumber,getRandomCoordinate,getArrValue,getGuestsCountName,setFilterChange,debounce}
 
 function getRandomNumber(min,max) {
   if (min<0||max<0||min===max||max<min) {
@@ -35,3 +35,18 @@ function getGuestsCountName(val) {
   const names = ['гостя','гостей','гостей'];
   return names[+val - 1]
 }
+
+function setFilterChange(cb) {
+  const filter = document.querySelector('.map__filters');
+  filter.addEventListener('change', () => {
+    cb();
+  });
+};
+
+function debounce(callback) {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), 100);
+  };
+};

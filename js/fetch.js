@@ -11,14 +11,13 @@ const getData = (resolve,reject) => {
       }
       return res.json();
     })
-    .then(ads => {
-      resolve(ads)
+    .then(res => {
+      resolve(res)
     }
   );
 };
 
 const sendData = (resolve, reject, data) => {
-  const sendButton = document.querySelector('.ad-form__submit')
   fetch(addressForPost,
     {
       method: 'POST',
