@@ -4,8 +4,8 @@ import {createCard} from './create_card.js';
 export {showOfferPopup}
 
 // Старотовые координаты
-const START_LAT = 35.68950;
-const START_LNG = 139.69200;
+const START_LAT = 35.69755;
+const START_LNG = 139.76097;
 
 toggleFormStatus(true);
 
@@ -14,7 +14,7 @@ const map = L.map('map-canvas')
   .setView({
     lat: START_LAT,
     lng: START_LNG,
-  }, 10);
+  }, 12);
 
 L.tileLayer(
   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

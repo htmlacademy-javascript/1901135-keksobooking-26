@@ -1,4 +1,4 @@
-export {showSuccessPopup,showErrorPopup}
+export {showSuccessPopup,showErrorPopup,showErrorServerPopup}
 
 
 // Успешная отправка формы
@@ -13,6 +13,8 @@ function showSuccessPopup() {
       cardElementSuccess.remove()
     }
   })
+  document.querySelector('.ad-form').reset();
+  document.querySelector('.map__filters').reset();
 }
 
 // Ошибка отправки формы
@@ -27,5 +29,13 @@ function showErrorPopup() {
       cardElementError.remove()
     }
   })
+}
+
+// Ошибка загрузки данных с сервера 
+const serverErrorPopup = document.querySelector('#server-error').content.querySelector('.error-server');
+const cardElementServerError = serverErrorPopup.cloneNode(true);
+
+function showErrorServerPopup() {
+  document.querySelector('#map-canvas').append(cardElementServerError);
 }
 

@@ -3,11 +3,13 @@ export {toggleFormStatus}
 import {getGuestsCountName} from './util.js';
 import {showSuccessPopup,showErrorPopup} from './user_modals.js';
 import {sendData} from './fetch.js';
+import {createSlider} from './price-slider.js';
 
 const form = document.querySelector('.ad-form');
 const formFieldsetsList = form.querySelectorAll('fieldset');
 const mapFilters = document.querySelector('.map__filters');
 const mapFiltersList = mapFilters.querySelectorAll('select, fieldset');
+const sliderElement = form.querySelector('.ad-form__slider');
 
 /* Функция вкл./выкл. форму */
 function toggleActiv(arr, status) {
@@ -22,9 +24,6 @@ function toggleFormStatus(status) {
 };
 
 /* Валидация формы */
-const MIN_TITLE_LENGTH = 30;
-const MAX_TITLE_LENGTH = 100;
-const MAX_ROOMS = 100;
 
 const pristine = new Pristine(form, {
   classTo: 'ad-form__element',
@@ -33,8 +32,10 @@ const pristine = new Pristine(form, {
   errorTextClass: 'ad-form__element--error'
 });
 
-const validateTitle = (val) => val.length >= MIN_TITLE_LENGTH && val.length <= MAX_TITLE_LENGTH;
+// Валидация заголовка
+const validateTitle = (val) => val.length >= 30 && val.length <= 100;
 pristine.addValidator(form.querySelector('#title'), validateTitle);
+
 
 const guestsCount = form.querySelector('#capacity');
 const roomsCount = form.querySelector('#room_number');
@@ -49,14 +50,14 @@ const guestsValue  = {
 const validateGuests = () => guestsValue[roomsCount.value].includes(+guestsCount.value);
 
 const addGuestsErorr = () => {
-  if (+guestsCount.value === 0 || +roomsCount.value === MAX_ROOMS) {
+  if (+guestsCount.value === 0 || +roomsCount.value === 100) {
     return 'Не для гостей';
   }
   return `Необходимо не более ${roomsCount.value} ${getGuestsCountName(roomsCount.value)}`;
 };
 
 const addRoomsErorr = () => {
-  if (+guestsCount.value === 0 || +roomsCount.value === MAX_ROOMS) {
+  if (+guestsCount.value === 0 || +roomsCount.value === 100) {
     return 'Не для гостей';
   }
   return `Вмещает не более ${roomsCount.value} ${getGuestsCountName(roomsCount.value)}`;
@@ -65,25 +66,63 @@ const addRoomsErorr = () => {
 pristine.addValidator(roomsCount, validateGuests, addRoomsErorr);
 pristine.addValidator(guestsCount, validateGuests, addGuestsErorr);
 
-const priceInput = form.querySelector('#price');
-const TypeField = document.querySelector('#type');
-const TypePrice = {
-  bungalow : 0,
-  flat: 1000,
-  hotel: 3000,
-  house: 5000,
-  palace: 10000
+// Слайдер с валидацией
+createSlider()
+
+const validateType = (value) => {
+  const price = form.querySelector('#price');
+
+  if(value === 'bungalow') {
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: 0,
+        max: 100000
+      },
+      start: 0,
+    });
+    return true;
+  } else if(value === 'flat') {
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: 1000,
+        max: 100000
+      },
+      start: 1000,
+    });
+    return true;
+  } else if(value === 'hotel') {
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: 3000,
+        max: 100000
+      },
+      start: 3000,
+    });
+    return true;
+  } else if(value === 'house') {
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: 5000,
+        max: 100000
+      },
+      start: 5000,
+    });
+    return true;
+  } else if(value === 'palace') {
+    sliderElement.noUiSlider.updateOptions({
+      range: {
+        min: 10000,
+        max: 100000
+      },
+      start: 10000,
+    });
+    return true;
+  }
 };
 
-const typeChanging = (evt) => {
-  const minRoomPrice = TypePrice[evt.target.value];
-  priceInput.placeholder = minRoomPrice;
-  priceInput.min = minRoomPrice;
-  pristine.validate(priceInput);
-};
+pristine.addValidator(form.querySelector('#type'), validateType);
 
-TypeField.addEventListener('change', typeChanging);
-
+// Синхронизация полей времени
 const checkInField = document.querySelector('#timein');
 const checkOutField = document.querySelector('#timeout');
 

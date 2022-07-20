@@ -3,11 +3,11 @@ export {getData,sendData};
 const addressForGet = 'https://26.javascript.pages.academy/keksobooking/data';
 const addressForPost = 'https://26.javascript.pages.academy/keksobooking';
 
-const getData = (resolve) => {
+const getData = (resolve,reject) => {
   fetch(addressForGet)
     .then(res => {
       if (!res.ok) {
-        throw new Error('error');
+        reject();
       }
       return res.json();
     })
@@ -18,6 +18,7 @@ const getData = (resolve) => {
 };
 
 const sendData = (resolve, reject, data) => {
+  const sendButton = document.querySelector('.ad-form__submit')
   fetch(addressForPost,
     {
       method: 'POST',
