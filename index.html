@@ -101,8 +101,8 @@
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="type">Тип жилья</label>
           <select id="type" name="type">
-            <option value="bungalow">Бунгало</option>
-            <option value="flat" selected>Квартира</option>
+            <option value="bungalow" selected>Бунгало</option>
+            <option value="flat">Квартира</option>
             <option value="hotel">Отель</option>
             <option value="house">Дом</option>
             <option value="palace">Дворец</option>
@@ -110,7 +110,7 @@
         </fieldset>
         <fieldset class="ad-form__element">
           <label class="ad-form__label" for="price">Цена за ночь, руб.</label>
-          <input id="price" name="price" type="number" placeholder="5000" min="0" max="100000" required
+          <input id="price" name="price" type="number" placeholder="0" min="0" max="100000" required
             data-pristine-required-message="Обязательное поле"
             data-pristine-min-message="Минимальное значение 0"
             data-pristine-max-message="Максимальное значение 100 000">
@@ -236,6 +236,13 @@
       <button type="button" class="error__button">Попробовать снова</button>
     </div>
   </template>
+
+    <!-- Сообщение об ошибке загрузки данных с сервера -->
+    <template id="server-error">
+      <div class="error-server">
+        <p class="error__message">Ошибка загрузки данных<br> Приносим свои извенения</p>
+      </div>
+    </template>
 
   <script src="leaflet/leaflet.js"></script>
   <script src ="nouislider/nouislider.js"></script>
