@@ -99,7 +99,6 @@ checkOutField.addEventListener('change', (evt) => {
 // Отправка формы
 form.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  
   const isValid = pristine.validate();
 
   if (isValid) {
