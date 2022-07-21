@@ -13,25 +13,14 @@ function getRandomCoordinate(min,max,dec) {
     console.log('Числа должны быть положительными и не равны, \nВторое число должно быть больше первого');
   } else {
     let num = +(Math.random()*max+min).toFixed(dec);
-    num > max ? num = max - +Math.random().toFixed(dec) : num = num; 
-    return num;   
+    num > max ? num = max - +Math.random().toFixed(dec) : num = num;
+    return num;
   }
-}
-
-function getArrValue(arr) {
-  let newArr = [];
-  for (let i = 0; i < getRandomNumber(1,arr.length+1); i++) {
-    let randomFeature = arr[getRandomNumber(0,arr.length-1)];
-    if (newArr.indexOf(randomFeature) === -1) {
-      newArr.push(randomFeature);
-    }
-  };
-  return newArr
 }
 
 function getGuestsCountName(val) {
   const names = ['гостя','гостей','гостей'];
-  return names[+val - 1]
+  return names[+val - 1];
 }
 
 function setFilterChange(cb) {
@@ -39,7 +28,7 @@ function setFilterChange(cb) {
   filter.addEventListener('change', () => {
     cb();
   });
-};
+}
 
 function debounce(callback) {
   let timeoutId;
@@ -47,6 +36,6 @@ function debounce(callback) {
     clearTimeout(timeoutId);
     timeoutId = setTimeout(() => callback.apply(this, rest), 100);
   };
-};
+}
 
-export {getRandomNumber,getRandomCoordinate,getArrValue,getGuestsCountName,setFilterChange,debounce};
+export {getRandomNumber,getRandomCoordinate,getGuestsCountName,setFilterChange,debounce};

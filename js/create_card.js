@@ -26,18 +26,19 @@ function createCard(el) {
   featuresList.forEach((featureItem) => {
     if (el.offer.features && !el.offer.features.some((feature) => featureItem.classList.contains(`popup__feature--${feature}`))) {
       featureItem.remove();
-    }
+    };
   });
 
   photoList.innerHTML = '';
-    if (el.offer.photos) {
-      el.offer.photos.forEach((photo) => {
-        const photoElement = photoElements.cloneNode(true);
-        photoElement.src = photo;
-        photoList.append(photoElement);
-     })
-    }   
-    
+
+  if (el.offer.photos) {
+    el.offer.photos.forEach((photo) => {
+      const photoElement = photoElements.cloneNode(true);
+      photoElement.src = photo;
+      photoList.append(photoElement);
+    });
+  };
+
   return cardElement;
 };
 

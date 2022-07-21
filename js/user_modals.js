@@ -5,7 +5,7 @@ const cardElementSuccess = successPopup.cloneNode(true);
 function showSuccessPopup() {
   document.querySelector('body').append(cardElementSuccess);
   cardElementSuccess.onclick = () => cardElementSuccess.remove();
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape') {
       cardElementSuccess.remove();
     }
@@ -21,19 +21,19 @@ const cardElementError = errorPopup.cloneNode(true);
 function showErrorPopup() {
   document.querySelector('body').append(cardElementError);
   cardElementError.onclick = () => cardElementError.remove();
-  document.addEventListener("keydown", function (e) {
+  document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape') {
-      cardElementError.remove();``
-    };
-  })
-};
+      cardElementError.remove();
+    }
+  });
+}
 
-// Ошибка загрузки данных с сервера 
+// Ошибка загрузки данных с сервера
 const serverErrorPopup = document.querySelector('#server-error').content.querySelector('.error-server');
 const cardElementServerError = serverErrorPopup.cloneNode(true);
 
 function showErrorServerPopup() {
   document.querySelector('#map-canvas').append(cardElementServerError);
-};
+}
 
 export {showSuccessPopup,showErrorPopup,showErrorServerPopup};

@@ -15,7 +15,7 @@ const addPreview = (evt, elm) => {
 
   if (matches) {
     elm.src = URL.createObjectURL(file);
-  };
+  }
 };
 
 fileAvatar.addEventListener('change', (evt) => {

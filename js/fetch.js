@@ -10,9 +10,8 @@ const getData = (resolve,reject) => {
       return res.json();
     })
     .then((res) => {
-      resolve(res)
-    }
-  );
+      resolve(res);
+    });
 };
 
 const sendData = (resolve, reject, data) => {
@@ -27,8 +26,7 @@ const sendData = (resolve, reject, data) => {
       } else {
         resolve();
       }
-    }
-  )
+    });
 };
 
 export {getData,sendData};

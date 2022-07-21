@@ -11,7 +11,9 @@ const sliderElement = form.querySelector('.ad-form__slider');
 
 /* Функция вкл./выкл. форму */
 function toggleActiv(arr, status) {
-  arr.forEach((el) => el.disabled = status)
+  arr.forEach(function(el) {
+    el.disabled = status;
+  });
 };
 
 function toggleFormStatus(status) {
@@ -68,7 +70,9 @@ pristine.addValidator(guestsCount, validateGuests, addGuestsErorr);
 createSlider();
 
 const validateType = (value) => {
-  if (value === 'bungalow') {
+  const price = form.querySelector('#price');
+
+  if(value === 'bungalow') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -76,7 +80,8 @@ const validateType = (value) => {
       },
       start: 0,
     });
-  } else if (value === 'flat') {
+    return true;
+  } else if(value === 'flat') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 1000,
@@ -84,7 +89,8 @@ const validateType = (value) => {
       },
       start: 1000,
     });
-  } else if (value === 'hotel') {
+    return true;
+  } else if(value === 'hotel') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 3000,
@@ -92,7 +98,8 @@ const validateType = (value) => {
       },
       start: 3000,
     });
-  } else if (value === 'house') {
+    return true;
+  } else if(value === 'house') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 5000,
@@ -100,7 +107,8 @@ const validateType = (value) => {
       },
       start: 5000,
     });
-  } else if (value === 'palace') {
+    return true;
+  } else if(value === 'palace') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 10000,
@@ -108,7 +116,8 @@ const validateType = (value) => {
       },
       start: 10000,
     });
-  };
+    return true;
+  }
 };
 
 pristine.addValidator(form.querySelector('#type'), validateType);
@@ -132,8 +141,9 @@ form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
 
   if (isValid) {
+    console.log(1)
     const formData = new FormData(evt.target);
     sendData(showSuccessPopup,showErrorPopup,formData);
-  };
+  }
 });
 export {toggleFormStatus};
