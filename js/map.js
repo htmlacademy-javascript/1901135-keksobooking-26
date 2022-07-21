@@ -1,8 +1,6 @@
 import {toggleFormStatus} from './form.js';
 import {createCard} from './create_card.js';
 
-export {showOfferPopup}
-
 // Старотовые координаты
 const START_LAT = 35.69755;
 const START_LNG = 139.76097;
@@ -21,7 +19,6 @@ L.tileLayer(
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   },
 ).addTo(map);
-
 
 // Главная метка
 const mainMarkIcon = L.icon({
@@ -62,7 +59,7 @@ const ordinaryPinIcon = L.icon({
 
 // Балун
 function showOfferPopup(offers) {
-  offers.forEach((card) =>  {
+  offers.slice(0,10).forEach((card) =>  {
     const marker = L.marker({
       lat: card.location.lat,
       lng: card.location.lng,
@@ -74,7 +71,6 @@ function showOfferPopup(offers) {
       .addTo(markerGroup)
       .bindPopup(createCard(card));
   });
-}
+};
 
-
-
+export {showOfferPopup,markerGroup};
