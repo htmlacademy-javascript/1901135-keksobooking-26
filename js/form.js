@@ -11,7 +11,9 @@ const sliderElement = form.querySelector('.ad-form__slider');
 
 /* Функция вкл./выкл. форму */
 function toggleActiv(arr, status) {
-  arr.forEach((el) => el.disabled = status)
+  arr.forEach(function(el) {
+    el.disabled = status;
+  });
 };
 
 function toggleFormStatus(status) {

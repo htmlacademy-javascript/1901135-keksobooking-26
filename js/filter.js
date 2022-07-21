@@ -93,7 +93,7 @@ const filterMap = (data) => {
     .filter(filterElevator)
     .filter(filterConditioner);
 
-    showOfferPopup(filtered);
+  showOfferPopup(filtered);
 };
 
 export {filterMap};

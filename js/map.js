@@ -8,7 +8,7 @@ const START_LNG = 139.76097;
 toggleFormStatus(true);
 
 const map = L.map('map-canvas')
-  .on('load', () => {toggleFormStatus(false)})
+  .on('load', () => toggleFormStatus(false))
   .setView({
     lat: START_LAT,
     lng: START_LNG,
@@ -38,7 +38,7 @@ const mainMarkMarker = L.marker({
 mainMarkMarker.addTo(map);
 
 //Выбор адреса
-const roundCoordinate = coord => coord.toFixed(5);
+const roundCoordinate = (coord) => coord.toFixed(5);
 
 const addressInput = document.querySelector('#address');
 addressInput.readOnly = true;
@@ -71,6 +71,6 @@ function showOfferPopup(offers) {
       .addTo(markerGroup)
       .bindPopup(createCard(card));
   });
-};
+}
 
 export {showOfferPopup,markerGroup};
