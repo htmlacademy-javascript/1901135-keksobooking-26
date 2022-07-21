@@ -1,5 +1,3 @@
-export {createSlider}
-
 const slider = document.querySelector('.ad-form__slider');
 const priceField = document.querySelector('#price');
 
@@ -23,4 +21,4 @@ const createSlider = () => {
   });
 };
 
-
+export {createSlider};

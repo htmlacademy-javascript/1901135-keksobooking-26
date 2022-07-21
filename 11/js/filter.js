@@ -1,8 +1,6 @@
 import {markerGroup} from './map.js';
 import {showOfferPopup} from './map.js';
 
-export {filterMap}
-
 const filter = document.querySelector('.map__filters');
 const type = filter.querySelector('#housing-type');
 const price = filter.querySelector('#housing-price');
@@ -97,3 +95,5 @@ const filterMap = (data) => {
 
     showOfferPopup(filtered);
 };
+
+export {filterMap};
