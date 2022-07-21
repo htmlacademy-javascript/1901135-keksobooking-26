@@ -1,13 +1,11 @@
-export {createCard};
-
 const cardTemplate = document.querySelector('#card').content.querySelector('.popup');
 const typesMatch = {
-                    flat:    'Квартира',
-                    bungalow:'Бунгало',
-                    house:   'Дом',
-                    palace:  'Дворец',
-                    hotel:   'Отель',
-                  };               
+  flat:    'Квартира',
+  bungalow:'Бунгало',
+  house:   'Дом',
+  palace:  'Дворец',
+  hotel:   'Отель',
+};         
 
 function createCard(el) {
 
@@ -31,7 +29,7 @@ function createCard(el) {
     }
   });
 
-  photoList.innerHTML = ''; 
+  photoList.innerHTML = '';
     if (el.offer.photos) {
       el.offer.photos.forEach((photo) => {
         const photoElement = photoElements.cloneNode(true);
@@ -40,5 +38,7 @@ function createCard(el) {
      })
     }   
     
-  return cardElement
-}
+  return cardElement;
+};
+
+export {createCard};

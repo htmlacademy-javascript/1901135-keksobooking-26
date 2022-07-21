@@ -8,14 +8,5 @@ import './upload-file.js';
 // Получение и отрисовка обьявлений с сервера
 getData((data) => {
   showOfferPopup(data);
-  setFilterChange(debounce(() => filterMap(data)))
-},showErrorServerPopup)
-
-
-
-
-
-
-
-
-
+  setFilterChange(debounce(() => filterMap(data)));
+},showErrorServerPopup);

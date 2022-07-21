@@ -1,5 +1,3 @@
-export {toggleFormStatus}
-
 import {getGuestsCountName} from './util.js';
 import {showSuccessPopup,showErrorPopup} from './user_modals.js';
 import {sendData} from './fetch.js';
@@ -13,12 +11,12 @@ const sliderElement = form.querySelector('.ad-form__slider');
 
 /* Функция вкл./выкл. форму */
 function toggleActiv(arr, status) {
-  arr.forEach(el => el.disabled = status)
-}
+  arr.forEach((el) => el.disabled = status)
+};
 
 function toggleFormStatus(status) {
-  status ? form.classList.add(`${form.classList[0]}--disabled`) : form.classList.remove(`${form.classList[0]}--disabled`)
-  status ? mapFilters.classList.add(`${mapFilters.classList[0]}--disabled`) : mapFilters.classList.remove(`${mapFilters.classList[0]}--disabled`)
+  status ? form.classList.add(`${form.classList[0]}--disabled`) : form.classList.remove(`${form.classList[0]}--disabled`);
+  status ? mapFilters.classList.add(`${mapFilters.classList[0]}--disabled`) : mapFilters.classList.remove(`${mapFilters.classList[0]}--disabled`);
   toggleActiv(formFieldsetsList, status);
   toggleActiv(mapFiltersList, status);
 };
@@ -36,7 +34,7 @@ const pristine = new Pristine(form, {
 const validateTitle = (val) => val.length >= 30 && val.length <= 100;
 pristine.addValidator(form.querySelector('#title'), validateTitle);
 
-
+// Валидация количества гостей/комнат
 const guestsCount = form.querySelector('#capacity');
 const roomsCount = form.querySelector('#room_number');
 
@@ -67,12 +65,10 @@ pristine.addValidator(roomsCount, validateGuests, addRoomsErorr);
 pristine.addValidator(guestsCount, validateGuests, addGuestsErorr);
 
 // Слайдер с валидацией
-createSlider()
+createSlider();
 
 const validateType = (value) => {
-  const price = form.querySelector('#price');
-
-  if(value === 'bungalow') {
+  if (value === 'bungalow') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 0,
@@ -80,8 +76,7 @@ const validateType = (value) => {
       },
       start: 0,
     });
-    return true;
-  } else if(value === 'flat') {
+  } else if (value === 'flat') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 1000,
@@ -89,8 +84,7 @@ const validateType = (value) => {
       },
       start: 1000,
     });
-    return true;
-  } else if(value === 'hotel') {
+  } else if (value === 'hotel') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 3000,
@@ -98,8 +92,7 @@ const validateType = (value) => {
       },
       start: 3000,
     });
-    return true;
-  } else if(value === 'house') {
+  } else if (value === 'house') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 5000,
@@ -107,8 +100,7 @@ const validateType = (value) => {
       },
       start: 5000,
     });
-    return true;
-  } else if(value === 'palace') {
+  } else if (value === 'palace') {
     sliderElement.noUiSlider.updateOptions({
       range: {
         min: 10000,
@@ -116,8 +108,7 @@ const validateType = (value) => {
       },
       start: 10000,
     });
-    return true;
-  }
+  };
 };
 
 pristine.addValidator(form.querySelector('#type'), validateType);
@@ -142,7 +133,9 @@ form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
 
   if (isValid) {
-    const formData = new FormData(evt.target)
-    sendData(showSuccessPopup,showErrorPopup,formData)
-  }
+    const formData = new FormData(evt.target);
+    sendData(showSuccessPopup,showErrorPopup,formData);
+  };
 });
+
+export {toggleFormStatus};
