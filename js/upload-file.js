@@ -1,7 +1,6 @@
-const form = document.querySelector('.ad-form');
-
 const FILES_TYPES = ['gif', 'jpg', 'jpeg', 'png'];
 
+const form = document.querySelector('.ad-form');
 const fileAvatar = form.querySelector('#avatar');
 const avatarPreview = form.querySelector('.ad-form-header__preview > img');
 const filePhoto = form.querySelector('#images');

@@ -5,9 +5,9 @@ const typesMatch = {
   house:   'Дом',
   palace:  'Дворец',
   hotel:   'Отель',
-};         
+};
 
-function createCard(el) {
+const createCard = (el) => {
 
   const cardElement = cardTemplate.cloneNode(true);
   const featuresList = cardElement.querySelectorAll('.popup__feature');
@@ -26,7 +26,7 @@ function createCard(el) {
   featuresList.forEach((featureItem) => {
     if (el.offer.features && !el.offer.features.some((feature) => featureItem.classList.contains(`popup__feature--${feature}`))) {
       featureItem.remove();
-    };
+    }
   });
 
   photoList.innerHTML = '';
@@ -37,7 +37,7 @@ function createCard(el) {
       photoElement.src = photo;
       photoList.append(photoElement);
     });
-  };
+  }
 
   return cardElement;
 };

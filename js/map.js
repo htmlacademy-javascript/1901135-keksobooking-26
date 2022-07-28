@@ -58,7 +58,7 @@ const ordinaryPinIcon = L.icon({
 });
 
 // Балун
-function showOfferPopup(offers) {
+const showOfferPopup = (offers) => {
   offers.slice(0,10).forEach((card) =>  {
     const marker = L.marker({
       lat: card.location.lat,
@@ -71,6 +71,6 @@ function showOfferPopup(offers) {
       .addTo(markerGroup)
       .bindPopup(createCard(card));
   });
-}
+};
 
 export {showOfferPopup,markerGroup};
