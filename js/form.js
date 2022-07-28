@@ -10,18 +10,24 @@ const mapFiltersList = mapFilters.querySelectorAll('select, fieldset');
 const sliderElement = form.querySelector('.ad-form__slider');
 
 /* Функция вкл./выкл. форму */
-function toggleActiv(arr, status) {
-  arr.forEach(function(el) {
+const toggleActiv = (arr, status) => {
+  arr.forEach((el) => {
     el.disabled = status;
   });
-};
+}
 
-function toggleFormStatus(status) {
-  status ? form.classList.add(`${form.classList[0]}--disabled`) : form.classList.remove(`${form.classList[0]}--disabled`);
-  status ? mapFilters.classList.add(`${mapFilters.classList[0]}--disabled`) : mapFilters.classList.remove(`${mapFilters.classList[0]}--disabled`);
+const toggleFormStatus = (status) => {
+  if (status) {
+    form.classList.add(`${form.classList[0]}--disabled`);
+    mapFilters.classList.add(`${mapFilters.classList[0]}--disabled`);
+  } else {
+    form.classList.remove(`${form.classList[0]}--disabled`);
+    mapFilters.classList.remove(`${mapFilters.classList[0]}--disabled`);
+  }
+
   toggleActiv(formFieldsetsList, status);
   toggleActiv(mapFiltersList, status);
-};
+}
 
 /* Валидация формы */
 
@@ -70,7 +76,6 @@ pristine.addValidator(guestsCount, validateGuests, addGuestsErorr);
 createSlider();
 
 const validateType = (value) => {
-  const price = form.querySelector('#price');
 
   if(value === 'bungalow') {
     sliderElement.noUiSlider.updateOptions({
@@ -142,7 +147,6 @@ form.addEventListener('submit', (evt) => {
   const isValid = pristine.validate();
 
   if (isValid) {
-    console.log(1)
     const formData = new FormData(evt.target);
     sendData(showSuccessPopup,showErrorPopup,formData);
   }

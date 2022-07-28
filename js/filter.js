@@ -1,62 +1,65 @@
 import {markerGroup} from './map.js';
 import {showOfferPopup} from './map.js';
 
-const filter = document.querySelector('.map__filters');
-const type = filter.querySelector('#housing-type');
-const price = filter.querySelector('#housing-price');
-const rooms = filter.querySelector('#housing-rooms');
-const guests = filter.querySelector('#housing-guests');
-const wifi = filter.querySelector('#filter-wifi');
-const dishwasher = filter.querySelector('#filter-dishwasher');
-const parking = filter.querySelector('#filter-parking');
-const washer = filter.querySelector('#filter-washer');
-const conditioner = filter.querySelector('#filter-conditioner');
+const MAX_LOW_PRICE = 10000;
+const MAX_MIDDLE_PRICE = 50000;
 
-const filterType = (el) => type.value === el.offer.type || type.value === 'any';
-const filterRooms = (el) => +rooms.value === +el.offer.rooms || rooms.value === 'any';
-const filterQuests = (el) => +guests.value === +el.offer.guests || guests.value === 'any';
+const filter = document.querySelector('.map__filters');
+const typeElement = filter.querySelector('#housing-type');
+const priceElement = filter.querySelector('#housing-price');
+const roomsElement = filter.querySelector('#housing-rooms');
+const guestsElement = filter.querySelector('#housing-guests');
+const wifiElement = filter.querySelector('#filter-wifi');
+const dishwasherElement = filter.querySelector('#filter-dishwasher');
+const parkingElement = filter.querySelector('#filter-parking');
+const washerElement = filter.querySelector('#filter-washer');
+const conditionerElement = filter.querySelector('#filter-conditioner');
+
+const filterType = (el) => typeElement.value === el.offer.type || typeElement.value === 'any';
+const filterRooms = (el) => +roomsElement.value === +el.offer.rooms || roomsElement.value === 'any';
+const filterQuests = (el) => +guestsElement.value === +el.offer.guests || guestsElement.value === 'any';
 
 const filterPrice = (el) => {
-  switch (price.value) {
+  switch (priceElement.value) {
     case 'any':
       return true;
     case 'low':
-      return el.offer.price < 10000;
+      return el.offer.price < MAX_LOW_PRICE;
     case 'middle':
-      return el.offer.price >= 10000 && el.offer.price <= 50000;
+      return el.offer.price >= MAX_LOW_PRICE && el.offer.price <= MAX_MIDDLE_PRICE;
     case 'high':
-      return el.offer.price > 50000;
+      return el.offer.price > MAX_MIDDLE_PRICE;
   }
 };
 
 const filterWifi = (el) => {
-  if(el.offer.features && wifi.checked) {
-    return el.offer.features.includes(wifi.value);
-  } else if(!wifi.checked) {
+  if(el.offer.features && wifiElement.checked) {
+    return el.offer.features.includes(wifiElement.value);
+  } else if(!wifiElement.checked) {
     return true;
   }
 };
 
 const filterDishwasher = (el) => {
-  if(el.offer.features && dishwasher.checked) {
-    return el.offer.features.includes(dishwasher.value);
-  } else if(!dishwasher.checked) {
+  if(el.offer.features && dishwasherElement.checked) {
+    return el.offer.features.includes(dishwasherElement.value);
+  } else if(!dishwasherElement.checked) {
     return true;
   }
 };
 
 const filterParking = (el) => {
-  if(el.offer.features && parking.checked) {
-    return el.offer.features.includes(parking.value);
-  } else if(!parking.checked) {
+  if(el.offer.features && parkingElement.checked) {
+    return el.offer.features.includes(parkingElement.value);
+  } else if(!parkingElement.checked) {
     return true;
   }
 };
 
 const filterWasher = (el) => {
-  if(el.offer.features && washer.checked) {
-    return el.offer.features.includes(washer.value);
-  } else if(!washer.checked) {
+  if(el.offer.features && washerElement.checked) {
+    return el.offer.features.includes(washerElement.value);
+  } else if(!washerElement.checked) {
     return true;
   }
 };
@@ -71,9 +74,9 @@ const filterElevator = (el) => {
 };
 
 const filterConditioner = (el) => {
-  if(el.offer.features && conditioner.checked) {
-    return el.offer.features.includes(conditioner.value);
-  } else if(!conditioner.checked) {
+  if(el.offer.features && conditionerElement.checked) {
+    return el.offer.features.includes(conditionerElement.value);
+  } else if(!conditionerElement.checked) {
     return true;
   }
 };
