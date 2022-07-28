@@ -40,6 +40,6 @@ const createCard = (el) => {
   }
 
   return cardElement;
-}
+};
 
 export {createCard};

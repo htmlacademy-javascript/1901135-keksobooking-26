@@ -14,7 +14,7 @@ const toggleActiv = (arr, status) => {
   arr.forEach((el) => {
     el.disabled = status;
   });
-}
+};
 
 const toggleFormStatus = (status) => {
   if (status) {
@@ -27,7 +27,7 @@ const toggleFormStatus = (status) => {
 
   toggleActiv(formFieldsetsList, status);
   toggleActiv(mapFiltersList, status);
-}
+};
 
 /* Валидация формы */
 

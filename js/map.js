@@ -71,6 +71,6 @@ const showOfferPopup = (offers) => {
       .addTo(markerGroup)
       .bindPopup(createCard(card));
   });
-}
+};
 
 export {showOfferPopup,markerGroup};

@@ -12,7 +12,7 @@ const showSuccessPopup = () => {
   });
   document.querySelector('.ad-form').reset();
   document.querySelector('.map__filters').reset();
-}
+};
 
 // Ошибка отправки формы
 const errorPopup = document.querySelector('#error').content.querySelector('.error');
@@ -26,7 +26,7 @@ const showErrorPopup = () => {
       cardElementError.remove();
     }
   });
-}
+};
 
 // Ошибка загрузки данных с сервера
 const serverErrorPopup = document.querySelector('#server-error').content.querySelector('.error-server');
@@ -34,6 +34,6 @@ const cardElementServerError = serverErrorPopup.cloneNode(true);
 
 const showErrorServerPopup = () => {
   document.querySelector('#map-canvas').append(cardElementServerError);
-}
+};
 
 export {showSuccessPopup,showErrorPopup,showErrorServerPopup};

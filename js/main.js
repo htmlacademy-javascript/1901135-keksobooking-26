@@ -13,15 +13,15 @@ const showData = () => {
     showOfferPopup(data);
     setFilterChange(debounce(() => filterMap(data)));
   },showErrorServerPopup);
-}
+};
 
-showData()
+showData();
 
 // Функционал кнопки очистить
 
 clearButton.onclick = () => {
   clearForm();
   showData();
-}
+};
 
 
